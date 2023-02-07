@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
+
+/*RESET STYLES*/
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote {
+ padding: 0;
+ margin: 0;
+ font-size: 62.5%;
+ font-weight: normal;
+}
+table { border-collapse: collapse; border-spacing: 0; }
+td, th, caption { font-weight: normal; text-align: left; }
+img, fieldset { border: 0; }
+ol { padding-left: 1.4em; list-style: decimal; }
+ul { padding-left: 1.4em; list-style:square; }
+q:before, q:after { content:''; }
+button{cursor: pointer; outline: none;}
+/*------------------------------------------------*/
+/*------------------------------------------------*/
+body{
+	background-color: #F2CED5;
+}
+
+#quote-box{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;	
+	height: 100vh;
+}
+
+#quote{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: clamp(250px, 20vw + 23vh, 550px);
+	height: clamp(300px, 23vw + 23vh, 530px);
+	padding: 0 3%;	
+	margin: 0 auto;
+	background-color: #212226;
+	color:#FFF;
+	font-family: 'Signika Negative', sans-serif;
+	box-shadow: 8px 8px 11px 4px rgba(217,150,162,0.82);
+	border:solid #F2E0C9 clamp(10px, 2vw, 30px);
+}
+
+#text{
+	text-align: center;	
+	font-size: clamp(1.6rem, 1.2rem + 1vw, 3.2rem);
+}
+
+#author{
+	text-align: right;
+	padding: 20px 0 0 0;
+	font-size: clamp(1.4rem, 1rem + 1vw, 2.2rem);
+}
+
+#buttons{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+	#new-quote{
+		background: transparent;
+		border:none;
+	}
+
+.bi{
+	font-size: 4.5rem;
+	text-shadow: 6px 5px 2px rgb(217 150 162 / 50%);
+}
+
+.bi-twitter{
+	color: #00ACEE;
+}
+.bi-arrow-right{
+	color: #212226;
+}
+
+
+
+
