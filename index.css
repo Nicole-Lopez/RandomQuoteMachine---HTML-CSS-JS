@@ -20,47 +20,97 @@ body{
 	background-color: #F2CED5;
 }
 main{
-	width: 600px;
 	margin: auto;
 	position: relative;
 	padding-top: 150px;
 }
-.menu, .menu::after, .menu::before{
+
+#menu, #menu::after, #menu::before{
 	position: absolute;
-    border: solid 1px black;  
+    border: solid 1px #000;  
 }
 
-.menu{
+#menu{
 	top: 5%;
-	left: 250px;
+	left: 0;
+	right: 6%;
+	width: 8px;
+	height: 30px;
+	margin: auto;
+	background-color: #c0c0c0;
 	transform: skewY(0deg);
-	padding: 20px 8px;
-	background-color: silver;
+	border-radius: 20px 20px 0 0;
+}
+
+#menu::after{
+	content: "";
+	bottom: -22px;
+    right: -23px;
+    width: 100%;
+    height: 20px;
+    background-color: #c0c0c0;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+	border-radius: 0 0 20px 20px;
+}
+
+#menu::before{
+	content: "";
+	top: 130%;
+	right: clamp(-150px, -15vw, -92px);
+	z-index: 2;
+	width: clamp(180px, 23vw, 250px);
+	height: 300px;
+	border-radius: 45%;
+}
+
+
+#quote-box, #quote-box::before, #quote-box::after{
+	background-color: #F2E0C9;
+	border: solid 1px #000;
+}
+
+#quote-box{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;	
+	width: clamp(250px, 20vw + 23vh, 550px);
+	height: clamp(300px, 23vw + 23vh, 530px);
+	padding: 15px;
+	margin: auto;
 	color:#FFF;
 	font-family: 'Signika Negative', sans-serif;
 	font-size: clamp(1.6rem, 1.2rem + 1vw, 3.2rem);
 }
 
-.menu::after{
+#quote-box::before{
 	content: "";
-    bottom: -33px;
-    right: -32px;
-    width: 100%;
-    height: 30px;
-    background-color: silver;
-    transform-origin: bottom;
-    transform: skewX(45deg);
+	position: absolute;
+	top: 0;
+	left: clamp(-32px, -3vw, -12px);
+	width: clamp(10px, 3vw, 30px);
+	height: 100%;
+	transform-origin: right;
+	transform: skewY(45deg);
 }
 
-.menu::before{
+#quote-box::after{
 	content: "";
-	top: 120%;
-	right: -150px;
-	z-index: 2;
-	width: 250px;
-	height: 300px;
-	border-radius: 40%;
+	position: absolute;
+	top: clamp(-32px, -3vw, -12px);
+	left: 0;
+	width: 100%;
+	height: clamp(10px, 3vw, 30px);
+	transform-origin: bottom;
+	transform: skewX(45deg);	
 }
+#quote-box, #menu::before{
+	animation: balance 2s ease-in-out;
+}
+
+
 
 #quote{
 	display: flex;
@@ -72,57 +122,17 @@ main{
 	height: 97%;
 	background-color: #212226;
 }
-#quote-box{
+#text, #author{
 	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;	
-	width: clamp(250px, 20vw + 23vh, 550px);
-	height: clamp(300px, 23vw + 23vh, 530px);
-	padding: 15px;
-	margin: 50px auto;
-	background-color: #F2E0C9;
-	color:#FFF;
-	font-family: 'Signika Negative', sans-serif;
-	font-size: clamp(1.6rem, 1.2rem + 1vw, 3.2rem);
-	border: solid 1px black;
-}
-
-#quote-box::before, #quote-box::after{
-	content: "";
-	position: absolute;
-	background-color: #F2E0C9;
-	border: solid 1px black;
-}
-
-#quote-box::before{
-	top: 0;
-	left: -30px;
-	width: 30px;
-	height: 100%;
-	transform-origin: right;
-	transform: skewY(45deg);
-}
-
-#quote-box::after{
-	top: -30px;
-	left: 0;
-	width: 100%;
-	height: 30px;
-	transform-origin: bottom;
-	transform: skewX(45deg);	
+	overflow: hidden;
 }
 
 #text{
-	overflow: hidden;
-	position: relative;
 	text-align: center;	
 	font-size: clamp(1.6rem, 1.2rem + 1vw, 3.2rem);
 }
+
 #author{
-	position: relative;
-	overflow: hidden;
 	text-align: right;
 	padding: 20px 0 0 0;
 	font-size: clamp(1.4rem, 1rem + 1vw, 2.2rem);
@@ -130,42 +140,45 @@ main{
 .run-animation{
 	animation: fadeIn 2s;
 }
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-
 
 
 
 #buttons{
+	position: absolute;
+    bottom: 2%;
+    left: 10%;
     margin: 20px auto;
-    display: flex;
-    justify-content: center;
+    gap: 3%;    
 }
-#tweet-quote{
+
+#tweet-quote, #new-quote{
 	position: relative;
+	pointer-events: none;
+	opacity: 0;
+    transition: opacity .7s;
+	text-decoration: none; 
 }	
 
+#tweet-quote.visible, #new-quote.visible{
+	pointer-events: auto;
+	opacity: 1;
+}	
 
 #new-quote{
-	position: relative;
 	background: transparent;
 	border:none;
 }
 
 .bi{
 	font-size: 4.5rem;
-	text-shadow: 6px 5px 2px rgb(217 150 162 / 50%);
+	color: #FFF;
 }
 
-.bi-twitter{
-	color: #00ACEE;
-}
-.bi-arrow-right{
-	color: #212226;
-}
+#new-quote:hover span, #tweet-quote:hover span {
+	visibility: visible;
+	opacity: 1;
+} 
+
 
 .toolTip{
     position: absolute;
@@ -195,18 +208,13 @@ main{
 
 }
 
-#new-quote:hover span, #tweet-quote:hover span {
-	visibility: visible;
-	opacity: 1;
-} 
-
-
-
-
-
-
-
-
-
-
-
+@keyframes balance {
+	0% {transform: rotate(15deg);}
+	35% {transform: rotate(-15deg);}
+	70% {transform: rotate(15deg);}
+	100% {transform: rotate(0deg);}
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

@@ -12,28 +12,25 @@
 </head>
 <body>
 	<main>
-		<button class="menu"></button>
+		<button id="menu"></button>
 		<div id="quote-box">
+			<div id="buttons">
+				<a target="_blank" rel="noopener noreferrer" id="tweet-quote">
+					<span class="toolTip">Publish quote</span>
+					<i class="bi bi-twitter"></i>
+				</a>
+
+				<button id="new-quote">
+					<span class="toolTip">New quote</span>
+					<i class="bi bi-arrow-right-circle"></i>
+				</button>					
+			</div>
 			<div id="quote">
 				<p id="text" class="run-animation"></p>
 				<p id="author" class="run-animation"></p>
 			</div>
 		</div>		
 	</main>
-
-
-	<div id="buttons">
-		<a target="_blank" rel="noopener noreferrer" id="tweet-quote">
-			<span class="toolTip">Publish quote</span>
-			<i class="bi bi-twitter"></i>
-		</a>
-
-		<button id="new-quote">
-			<span class="toolTip">New quote</span>
-			<i class="bi bi-arrow-right"></i>
-		</button>	
-	</div>	
-
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script type="text/javascript" src="index.js"></script>
